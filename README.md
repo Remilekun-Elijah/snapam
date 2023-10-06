@@ -1,1 +1,1 @@
-# snapam
+# mapify
