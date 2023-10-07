@@ -33,19 +33,19 @@ const handleSuccess = (response) => {
 
 API.interceptors.response.use(handleSuccess, handleSessionExpired)
 
-API.interceptors.request.use(config => {
- const cb = () => setTimeout( _ => window.location.href ='/', 2000),
- message = 'You are not authorized, please login again';
+// API.interceptors.request.use(config => {
+//  const cb = () => setTimeout( _ => window.location.href ='/', 2000),
+//  message = 'You are not authorized, please login again';
 
- if(Storage.get('authToken') === null && window.location.pathname !== '/') {
-  Alert({type: 'error', message, cb});
- }
+//  if(Storage.get('authToken') === null && window.location.pathname !== '/') {
+//   Alert({type: 'error', message, cb});
+//  }
 
- return config;
-}
-, error => {
- return Promise.reject(error);
-});
+//  return config;
+// }
+// , error => {
+//  return Promise.reject(error);
+// });
 
 
 export default API;
