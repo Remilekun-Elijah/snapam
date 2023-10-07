@@ -75,7 +75,7 @@ class Menu {
  viewLocation({ navigate }){
    return {
      text: "View",
-     action: (_, state) => navigate("/locations/" + state._id, {state})
+     action: (_, state) => navigate("/report/" + state._id, {state})
    }
   }
 }

@@ -29,11 +29,11 @@ export default function LocationDetails() {
 					</div>
 					</div>
 
-					<button
+					{/* <button
 						className="px-5 py-1 bg-slate-500 hover:bg-slate-900 rounded text-white"
 						onClick={(_) => navigate("/report/submit", {state})}>
 						Edit
-					</button>
+					</button> */}
 				</div>
 				<div>
 					{state.image &&

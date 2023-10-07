@@ -123,7 +123,7 @@ const ViewLocation = () => {
 								: {};
 						}),
 					);
-					// console.log(locations);
+					
 					setPagination((state) => ({
 						...state,
 						locations,
@@ -147,7 +147,7 @@ const ViewLocation = () => {
 	});
 	const dropdownMenu = [
 		menu.viewLocation({ navigate }),
-		menu.editLocation({ navigate }),
+		// menu.editLocation({ navigate }),
 		menu.deleteLocation({
 			actionName: "delete",
 			cb: ({ name, action }) => {
@@ -167,9 +167,6 @@ const ViewLocation = () => {
 		getLocations();
 	}, [pagination.page, pagination.status]);
 
-	// React.useEffect(() => {
-	// 	fetchReports();
-	// }, [pagination.lga, pagination.search]);
 
 	return (
 		<div>
