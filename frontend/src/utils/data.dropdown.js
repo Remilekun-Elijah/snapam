@@ -51,6 +51,7 @@ class Menu {
  treatLocation({actionName, cb}) {
   return {
    text: "Treat Report",
+   condition: (data) => !data._data.treatedBy,
    action: (_, data) => {
     
     cb({ action: (onSuccess, onError)=>{
