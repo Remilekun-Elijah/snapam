@@ -2,12 +2,12 @@ if(require('express')().get("env") === 'development') require("dotenv/config")
 const environment = {};
 
 environment.staging = {
- mongodbUrl: process.env.STAGING_DB_URL,
+ mongodbUrl: process.env.DB_URL,
  port: process.env.PORT || 9000
 }
 
 environment.development = {
- mongodbUrl: process.env.LOCAL_DB_URL ?? "mongodb+srv://remilekunelijah:09023007389@quiz-db.sqlaq.mongodb.net/snapam?retryWrites=true&w=majority",
+ mongodbUrl: process.env.DB_URL ?? "mongodb+srv://remilekunelijah:09023007389@quiz-db.sqlaq.mongodb.net/snapam?retryWrites=true&w=majority",
  port: process.env.PORT || 9000
 }
 

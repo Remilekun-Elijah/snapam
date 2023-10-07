@@ -7,14 +7,14 @@ cloudinary_cloudName:"remilekunelijah",
 }
 
 environment.staging = {
- backendUrl: "https://api-staging-mapify.onrender.com",
+ backendUrl: process.env.REACT_APP_API_URL ?? "https://api-staging-mapify.onrender.com",
 cloudinary_cloudName:"remilekunelijah",
  cloudinary_preset: "ixp9w0hy",
  cloudinary_folder: "Mapify"
 }
 
 environment.production = {
- backendUrl: "https://api-mapify.onrender.com",
+ backendUrl: process.env.REACT_APP_API_URL ?? "https://api-mapify.onrender.com",
  cloudinary_cloudName:"remilekunelijah",
  cloudinary_preset: "ixp9w0hy",
  cloudinary_folder: "Mapify"
