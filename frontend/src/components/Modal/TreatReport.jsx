@@ -4,11 +4,9 @@ import "./ModalOne.css";
 import Button from "../Button";
 import Success from "./Success";
 
-export default function Delete({
+export default function TreatReport({
 	setModal,
 	showModal,
- type,
- name,
 	action,
 }) {
 
@@ -39,28 +37,28 @@ export default function Delete({
 				>
 				<div className="my-5 w-full">
 					<h1 className="py-0 font-thin text-center leading-7">
-						Delete {type}
+						Treat Report
 					</h1>
 				</div>
 				<p className="leading-5 text-center">
-					Are you sure you want to delete {name||"this report"}?
+					Is this report completely treated?
 				</p>
 
 				<div className="flex justify-center">
 					<Button
 						wrapperClass={"mt-10 mb-5  mr-5 sm:w-[160px] w-[120px]"}
-						value={"Cancel"}
-						variant={"secondary"}
+						value={"No"}
+						variant={"danger"}
 						parentClass={"mr-2"}
 						onClick={(_) => setModal(!showModal)}
 					/>
 					<Button
 						wrapperClass={"mt-10 mb-5  mr-5 sm:w-[160px] w-[120px]"}
-						value={modalData.disabled?"Deleting...":"Delete"}
+						value={modalData.disabled?"Processing...":"Yes"}
 						disabled={modalData.disabled}
 						// width={"160px"}
 						type={"submit"}
-						variant={"danger"}
+						variant={"primary"}
 					/>
 				</div>
 			</form>
@@ -70,7 +68,7 @@ export default function Delete({
 			{...{
 				success: modalData.showSuccess,
 				setModal:	value => setModalData(state=>({...state, showSuccess: value})),
-				title: `${type} deleted successfully`,
+				title: `Report treated successfully`,
 				subtitle: "",
 			}}
 		/>

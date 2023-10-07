@@ -1,5 +1,5 @@
 const Api = require("express").Router()
-const location = require('./location')
+const location = require('./report')
 const user = require('./user')
 
 Api.use('/auth', user)

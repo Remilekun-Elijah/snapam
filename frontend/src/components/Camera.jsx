@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Webcam from "react-webcam";
 import ModalOne from "../layout/Modal";
 import Button from "./Button";
 import BACKEND from "../utils/backend";
 import { TbCameraRotate } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 const Api = new BACKEND();
 
-const WEBCAM = ({ showModal, setModal, locationId, fetchLocation }) => {
+const WEBCAM = ({ showModal, setModal, formData, fetchLocation, cb }) => {
+	const navigate = useNavigate();
+
 	const uploadImage = (base64) => {
+		setLoading(true);
+		console.log(formData);
+		if(base64){
+
 		Api.send({
-			type: "put",
-			to: `/location/image/${locationId}`,
+			type: "post",
+			to: `/location`,
 			useAlert: true,
-			payload: { base64 },
+			payload: { ...formData, image: base64?.split?.("data:image/jpeg;base64,")[1] },
 		})
 			.then((res) => {
 				setUrl("");
@@ -21,16 +28,22 @@ const WEBCAM = ({ showModal, setModal, locationId, fetchLocation }) => {
 				if (res.success) {
 					fetchLocation?.();
 					setModal(false);
+					navigate(-1)
 				}
 				return res;
 			})
 			.catch(console.error);
+		}
 	};
 
 	const [url, setUrl] = React.useState("");
 	const [camData, setCamData] = React.useState("");
 	const [loading, setLoading] = React.useState(false);
 	const [view, toggleView] = React.useState(true);
+
+	useEffect(_=> {
+		setUrl("")
+	}, [showModal])
 
 	const videoConstraints = {
 		width: 700,
@@ -39,22 +52,20 @@ const WEBCAM = ({ showModal, setModal, locationId, fetchLocation }) => {
 	};
 
 	const handleCapture = async (getScreenshot) => {
-		const imageSrc = getScreenshot().split("data:image/jpeg;base64,")[1];
-
 		setUrl(getScreenshot());
-		setLoading(true);
-		await uploadImage(imageSrc);
+		cb?.()
 	};
+
 	return (
 		<ModalOne
 			{...{
 				width: window.innerWidth > 992 ? "50%" : "95%",
 				height: "70vh",
 				showModal,
-				setModal,
+				setModal: !loading ? setModal : _=>{},
 			}}>
 			<div className="mb-5 flex justify-center items-center">
-				<h2 className="text-2xl mr-10">Capture A Location</h2>
+				<h2 className="text-2xl mr-10">Capture A Report</h2>
 
 				<TbCameraRotate
 					className="cursor-pointer"
@@ -87,21 +98,22 @@ const WEBCAM = ({ showModal, setModal, locationId, fetchLocation }) => {
 								<div className="flex justify-center flex-wrap mt-5">
 									<Button
 										{...{
-											value: loading ? "Capturing..." : "Capture Photo",
-											disabled: loading,
-											width: "200px",
-											wrapperClass: "md:mr-5",
-											onClick: (_) => handleCapture(getScreenshot),
-										}}
-									/>
-									<Button
-										{...{
 											value: "Cancel",
 											disabled: loading,
 											width: "200px",
 											variant: "danger",
-											wrapperClass: "mt-3 md:mt-0",
+											wrapperClass: "md:mr-5",
 											onClick: (_) => setModal(false),
+										}}
+									/>
+
+									<Button
+										{...{
+											value: loading ? "Capturing..." : "Capture Photo",
+											disabled: loading,
+											width: "200px",
+											wrapperClass: "mt-3 md:mt-0",
+											onClick: (_) => handleCapture(getScreenshot),
 										}}
 									/>
 								</div>
@@ -113,16 +125,30 @@ const WEBCAM = ({ showModal, setModal, locationId, fetchLocation }) => {
 				<div className="flex justify-center">
 					<div className="">
 						<img src={url} alt="" />
-						<div className="flex justify-center">
-							<Button
-								{...{
-									value: loading ? "Capturing..." : "Capture Photo",
-									disabled: loading,
-									width: "200px",
-									wrapperClass: "my-5",
-								}}
-							/>
-						</div>
+						<div className="flex justify-center flex-wrap mt-5">
+									<Button
+										{...{
+											value: "Retake image",
+											width: "200px",
+											variant: "danger",
+											wrapperClass: "md:mr-5",
+											onClick: (_) => {
+												setLoading(false)
+												setUrl("")
+											},
+										}}
+									/>
+
+									<Button
+										{...{
+											value: loading ? "Submitting..." : "Submit Report",
+											disabled: loading,
+											width: "200px",
+											wrapperClass: "mt-3 md:mt-0",
+											onClick: (_) => uploadImage(url),
+										}}
+									/>
+								</div>
 					</div>
 				</div>
 			)}

@@ -25,7 +25,7 @@ export default function LocationDetails() {
 						className="cursor-pointer mr-2 sm:mr-5 mt- hover:bg-slate-500 p-2 rounded-full"
 						onClick={(_) => navigate(-1)}
 					/>{" "}
-					<strong className="text-md sm:text-2xl mt-1">Location Details</strong>
+					<strong className="text-md sm:text-2xl mt-1">Report Details</strong>
 					</div>
 					</div>
 
@@ -43,7 +43,7 @@ export default function LocationDetails() {
       style={{maxHeight: "400px"}}
 						alt=""
 					/>
-     <div className="text-center text-lg mt-2">Location Image</div>
+     <div className="text-center text-lg mt-2">Report Image</div>
      </div>
      }
 
@@ -58,9 +58,9 @@ export default function LocationDetails() {
 								<tr>
 									<td className="flex mr-5">
 										<MdOutlineLocationCity title="Address" size="24" color="green" />{" "}
-										<p className="ml-2 text-gray-600">Address</p>
+										<p className="ml-2 text-gray-600">Area</p>
 									</td>
-									<td>{state.address || "N/A"}</td>
+									<td>{state.area || "N/A"}</td>
 								</tr>
 
 								<tr className="invisible">
@@ -96,12 +96,13 @@ export default function LocationDetails() {
 								<tr className="mt-20 pt-20">
 									<td className="flex mr-5">
 										<RiChatPollFill size="24" color="green" />{" "}
-										<p className="ml-2 text-gray-600">Polling Unit No.</p>
+										<p className="ml-2 text-gray-600">Type of Waste</p>
 									</td>
 
-									<td>{state.pollingUnit || "N/A"}</td>
+									<td>{state.typeOfWaste || "N/A"}</td>
 								</tr>
-
+								{state.treatedBy && 
+								<>
 								<tr className="invisible">
 									<td>place</td>
 								</tr>
@@ -109,10 +110,11 @@ export default function LocationDetails() {
 								<tr className="mt-20 pt-20">
 									<td className="flex mr-5">
 										<FaUserAlt size="24" color="green" />{" "}
-										<p className="ml-2 text-gray-600"> Agent Party Name</p>
+										<p className="ml-2 text-gray-600"> Treated By</p>
 									</td>
-									<td>{state.agentParty || "N/A"}</td>
+									<td>{state.treatedBy?.name || "N/A"}</td>
 								</tr>
+								</>}
 
 								<tr className="invisible">
 									<td>place</td>
@@ -121,7 +123,7 @@ export default function LocationDetails() {
 								<tr className="mt-20 pt-20">
 									<td className="flex mr-5">
 										<FaMobile size="24" color="green" />{" "}
-										<p className="ml-2 text-gray-600">Agent Tel. Number</p>
+										<p className="ml-2 text-gray-600">Reporters Tel.</p>
 									</td>
 									<td>{state.phoneNumber || "N/A"}</td>
 								</tr>

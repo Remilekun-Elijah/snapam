@@ -15,8 +15,8 @@ require("./utils/loadMigration")
 app.get("/", (req, res)=> {
  res.status(200).json({
   success: true,
-  message: "Welcome to Mapify",
-  verison: "1.0.0"
+  message: "Welcome to Snapam",
+  version: "1.0.0"
  })
 })
 

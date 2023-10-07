@@ -9,17 +9,21 @@ import Menu from "../utils/data.dropdown";
 import { IArrowBack, IEmpty } from "../utils/icons";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import Location from "../action/location";
+import Report from "../action/location";
+import { capitalize } from "../utils/helper";
+import Select from "../components/Select/Select";
+import TreatReport from "../components/Modal/TreatReport";
 
 const Api = new BACKEND();
 
 const ViewLocation = () => {
 	const [modals, setModals] = React.useState({
 		delete: false,
+		treat: false,
 		isLoading: false,
 		userId: [],
 		name: "",
-		type: "Location",
+		type: "Report",
 		cb: () => {},
 		action: () => {},
 	});
@@ -30,7 +34,7 @@ const ViewLocation = () => {
 	const deleteBulk = useCallback(
 		(payload, cb) => {
 			const deleteAction = (onSuccess, onError) =>
-				Location.bulkDelete(payload)
+				Report.bulkDelete(payload)
 					.then((res) => {
 						if (res.success) {
 							getLocations();
@@ -42,7 +46,7 @@ const ViewLocation = () => {
 								...state,
 								userId: "",
 								name: "",
-								type: "Location",
+								type: "Report",
 							}));
 						} else {
 							Alert({
@@ -75,44 +79,45 @@ const ViewLocation = () => {
 		pageSize: 10,
 		total: 0,
 		length: 0,
-		search: "",
+		status: "",
 	});
 
 	const getLocations = () => {
 		Api.send({
 			type: "get",
-			to: `/location/?page=${pagination.page}&pageSize=${pagination.pageSize}`,
+			to: `/location/?page=${pagination.page}&pageSize=${pagination.pageSize}&status=${pagination.status}`,
 			useAlert: false,
 		})
 			.then((res) => {
 				if (res?.success) {
-					const { pageSize, total, locations } = res?.data;
+					const { pageSize, total, reports } = res?.data;
 					setLocations(
-						locations?.map((data) => {
+						reports?.map((data, idx) => {
 							const {
-								description,
 								longitude,
 								latitude,
-								image,
-								address,
-								pollingUnit,
+								image, 
 								phoneNumber,
 								createdAt,
-								agentParty,
+								area,
+								typeOfWaste,
 								updatedAt,
 								lga,
-								...rest
+								isTreated,
+								treatedBy,
 							} = data;
 							return data
 								? {
+									"S/N": pagination.pageSize * (pagination.page - 1) + idx + 1,
 										image,
 										Coordinates: `${latitude}, ${longitude}`,
-										Address: address || "N/A",
+										"Type of Waste": typeOfWaste || "N/A",
 										LGA: lga || "N/A",
-										"PU No.": pollingUnit || "N/A",
-										"Party Agent": agentParty || "N/A",
-										"Party Agent No.": phoneNumber || "N/A",
-										...rest,
+										"Area.": area || "N/A",
+										"Phone No.": phoneNumber || "N/A",
+										"Treated By": treatedBy ? treatedBy?.name : "None",
+										"Status": isTreated ? "Treated" : "Pending",
+										// ...rest,
 										_data: data,
 								  }
 								: {};
@@ -133,9 +138,9 @@ const ViewLocation = () => {
 	};
 
 	const menu = new Menu({
-		action: Location,
+		action: Report,
 		refresh: getLocations,
-		type: "Location",
+		type: "Report",
 		setModal: setModals,
 		setFormData: (val) =>
 			setModals((state) => ({ ...state, disabledInfo: val })),
@@ -149,12 +154,22 @@ const ViewLocation = () => {
 				setModals((state) => ({ ...state, type: name, delete: true, action }));
 			},
 		}),
+		menu.treatLocation({
+			actionName: "treatLocation",
+			cb: ({ action }) => {
+				setModals((state) => ({ ...state, treat: true, action }));
+			},
+		}),
 	];
 
 	React.useEffect(() => {
 		setModals((state) => ({ ...state, isLoading: true }));
 		getLocations();
-	}, [pagination.page]);
+	}, [pagination.page, pagination.status]);
+
+	// React.useEffect(() => {
+	// 	fetchReports();
+	// }, [pagination.lga, pagination.search]);
 
 	return (
 		<div>
@@ -168,16 +183,34 @@ const ViewLocation = () => {
 							className="cursor-pointer mr-2 sm:mr-5 hover:bg-slate-500 p-2 rounded-full"
 							onClick={(_) => navigate(-1)}
 						/>{" "}
-						<strong className="text-md sm:text-2xl">View Locations</strong>
+						<strong className="text-md sm:text-2xl">View Reports</strong>
 					</div>
-					<button
+					{/* <div> */}
+						<div className="flex sm:mt-0 mt-10">
+					{/* <button
 						className="px-5 mt- sm:mt-0 py-1 bg-slate-500 hover:bg-slate-900 rounded text-white"
-						onClick={(_) => navigate("/add-new-location")}>
+						onClick={(_) => navigate("/report/submit")}>
 						Add New
-					</button>
+					</button> */}
+
+					<p className="mr-2">Filter by</p>
+					<Select
+						{...{
+							wrapperClass: 'mx-5',
+							options: ["Status", "Treated", "Pending"].map((name) => ({
+								name,
+								value: name === "Status" ? "" : capitalize(name),
+							})),
+							value: pagination.lga,
+							selectClass: "bg-[#eee] shadow-md py-1",
+							name: "lga",
+							onChange: e => setPagination({...pagination, status: e.target.value}),
+						}}
+					/>
+					</div>
 				</div>
 
-				<div className="py-5">
+				<div className="pb-5">
 				{locations.length ? (
 					<Table
 						{...{
@@ -196,7 +229,7 @@ const ViewLocation = () => {
 							alt="Not found"
 							style={{ width: "100px", height: "100px" }}
 						/>
-						<h1 className="text-xl mt-10">No location at the moment</h1>
+						<h1 className="text-xl mt-10">No report at the moment</h1>
 					</div>
 				)}
 				</div>
@@ -209,6 +242,14 @@ const ViewLocation = () => {
 						showModal: modals.delete,
 						action: modals.action,
 						name: modals.name,
+					}}
+				/>
+				<TreatReport
+					{...{
+						setModal: (val) =>
+							setModals((state) => ({ ...state, treat: val })),
+						showModal: modals.treat,
+						action: modals.action,
 					}}
 				/>
 			</div>

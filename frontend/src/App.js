@@ -20,12 +20,12 @@ function App() {
     <Routes>
       <Route path='/' element={<Login />} />
         <Route path="/landing/" element={<Landing />} />
-        <Route path="/report/" element={<SubmitReport />} />
+        <Route path="/report/submit" element={<SubmitReport />} />
       
        <Route element={<PrivateRoutes />}>
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/add-new-location' element={<AddLocation />} />
-        <Route path='/locations' element={<ViewLocation />} />
+        <Route path='/reports' element={<ViewLocation />} />
         <Route path="/locations/:locationId" element={<LocationDetails />} />
       </Route>
 

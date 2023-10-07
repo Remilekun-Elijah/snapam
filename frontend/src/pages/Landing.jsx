@@ -21,7 +21,7 @@ const Landing = () => {
       </div>
       <div className="flex justify-center w-full">
 
-       <button onClick={_=> navigate("/report")} className='bg-red-500 text-white shadow-lg rounded-lg sm:mt-10 mt-5 sm:w-[400px] w-[200px] sm:h-[60px] h-[40px] sm:text-bold sm:text-2xl amasis '>Click Here</button>
+       <button onClick={_=> navigate("/report/submit")} className='bg-red-500 text-white shadow-lg rounded-lg sm:mt-10 mt-5 sm:w-[400px] w-[200px] sm:h-[60px] h-[40px] sm:text-bold sm:text-2xl amasis '>Click Here</button>
       </div>
       </div>
       

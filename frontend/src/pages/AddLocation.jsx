@@ -8,7 +8,7 @@ import Alert from "../utils/alert";
 import { IArrowBack } from "../utils/icons";
 import SelectTwo from "../components/Select/SelectTwo";
 import Footer from "../components/Footer";
-import Location from "../action/location";
+import Report from "../action/location";
 
 
 const Button = styled.button``;
@@ -40,7 +40,7 @@ export default function AddLocation() {
 		e.preventDefault();
 		setSubmit(true);
 		try {
-			const res = state ? await Location.edit(formData, _id) : await Location.add(formData)
+			const res = state ? await Report.edit(formData, _id) : await Report.add(formData)
 
 			if (res?.success) {
 				Alert({ type: "success", message: res?.message });
@@ -71,7 +71,7 @@ export default function AddLocation() {
 								className="cursor-pointer mr-2 sm:mr-5 mt-1 hover:bg-slate-500 p-2 rounded-full"
 								onClick={(_) => navigate(-1)}
 							/>{" "}
-							<strong className="text-lg sm:text-2xl">{state ? "Edit Location" : "Add Location"}</strong>
+							<strong className="text-lg sm:text-2xl">{state ? "Edit Report" : "Add Report"}</strong>
 						</div>
 
 						<div>
@@ -204,7 +204,7 @@ export default function AddLocation() {
 								type={"submit"}
 								disabled={isSubmitting}>
 								{" "}
-								{isSubmitting ? "Sending..." : state ? "Update Location" : "Add Location"}{" "}
+								{isSubmitting ? "Sending..." : state ? "Update Report" : "Add Report"}{" "}
 							</Button>
 						</div>
 					</div>

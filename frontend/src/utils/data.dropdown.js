@@ -47,6 +47,30 @@ class Menu {
   };
  }
 
+
+ treatLocation({actionName, cb}) {
+  return {
+   text: "Treat Report",
+   action: (_, data) => {
+    
+    cb({ action: (onSuccess, onError)=>{
+      this.action[actionName](data._id).then((res) => {
+        if (res.success) {
+          this.refresh();
+          onSuccess()
+        }else {
+          Alert({
+            type: "error",
+            message: res.message,
+          });
+          onError()
+        }
+       }); 
+    }})
+   },
+  };
+ }
+
  viewLocation({ navigate }){
    return {
      text: "View",

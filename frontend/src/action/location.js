@@ -1,9 +1,9 @@
 import Backend from '../utils/backend'
 
-class Location {
+class Report {
  static API = new Backend()
 
- static async add (payload) {
+ static async create (payload) {
   return await this.API.send({
    type: "post",
    to: "/location",
@@ -45,6 +45,16 @@ static delete(locationId){
  useAlert: false,
 })
 }
+
+static treatLocation(locationId){
+
+ return this.API.send({
+ type: "put",
+ to: `/location/treat/${locationId}`,
+ useAlert: false,
+ payload: {isTreated: true}
+})
+}
 }
 
-export default Location;
+export default Report;

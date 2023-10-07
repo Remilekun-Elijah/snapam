@@ -24,7 +24,7 @@ const navigate = useNavigate();
      
      <div className='text-white w-full'>
       <h1 className='sm:text-8xl text-2xl text-center aharoni pb-0 mb-0'>SNAPAM</h1>
-      <p className='sm:text-xl text-[12px] text-center mt-0 pt-0 aharoni'>Lagos’s Street waste Location Identifier</p>
+      <p className='sm:text-xl text-[12px] text-center mt-0 pt-0 aharoni'>Lagos’s Street waste Report Identifier</p>
      </div>
 
      <div className='sm:w-[140px]'>

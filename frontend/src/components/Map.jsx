@@ -26,7 +26,7 @@ const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
                 <div className="flex flex-col">
 									<span>{description}</span>
 									<div className="flex justify-between">
-										{image ? (
+										{/* {image ? ( */}
 											<a
                       target="_blank"
                       rel="noreferrer"
@@ -34,7 +34,7 @@ const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
                       href={image}>
 												Open image{" "}
 											</a>
-										) : (
+										{/* ) : (
                       <span
                       className="text-end text-blue-700 cursor-pointer"
                       onClick={(_) => {
@@ -42,8 +42,8 @@ const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
                         setModal(true);
                       }}>
 												Upload Image
-											</span>
-										)}
+											</span> */}
+										{/* } */}
 
 										<Link
 											className="text-end ml-3"

@@ -8,7 +8,7 @@ import Alert from "../utils/alert";
 import { IArrowBack } from "../utils/icons";
 import SelectTwo from "../components/Select/SelectTwo";
 import Footer from "../components/Footer";
-import Location from "../action/location";
+import Report from "../action/location";
 import WEBCAM from "../components/Camera";
 
 
@@ -20,13 +20,15 @@ export default function SubmitReport() {
 	[isSubmitting, setSubmit] = React.useState(false),
 	{ state } = useLocation(),
 	values = {
+  longitude: '',
+  latitude: '',
 		image: "",
 		typeOfWaste: "",
 		area: "",
 		phoneNumber: "",
 		lga: "",
 	},
-	{__v, _id, createdAt, updatedAt, image, ...rest} = state || {},
+	{__v, _id, createdAt, updatedAt, image} = state || {},
  [showModal, setModal] = useState(false),
 	[formData, setFormData] = React.useState(values);
 	
@@ -38,7 +40,7 @@ export default function SubmitReport() {
 		e.preventDefault();
 		// setSubmit(true);
 		try {
-			// const res = state ? await Location.edit(formData, _id) : await Location.add(formData)
+			// const res = state ? await Report.edit(formData, _id) : await Report.add(formData)
 
 			// if (res?.success) {
 			// 	Alert({ type: "success", message: res?.message });
@@ -52,6 +54,43 @@ export default function SubmitReport() {
 			console.error(err);
 		}
 	};
+
+	async function getCoordinates() {
+		await navigator.geolocation.getCurrentPosition(
+			position => {
+				
+				console.log(position.coords);
+				if(position.coords){
+					
+					setFormData((state) => ({ ...state, latitude: position?.coords?.latitude, longitude: position?.coords?.longitude }));
+					console.log(formData); 
+					setModal(true)
+					} else {
+						console.log('Failed to retrieve location');
+					}
+		},
+			err => {
+				console.log(err);
+				Alert({type: 'error', message: 'You must grant us permission to your location to proceed'})
+	}
+	);
+	}
+
+	async function checkPermission () {
+		navigator.permissions.query({ name: 'geolocation' }).then(async function(result) {
+			if (result.state === 'granted') {
+					// Permission granted
+					console.log("It's been granted");
+						await getCoordinates()
+			} else if (result.state === 'prompt') {
+					// Prompt user for permission
+					await getCoordinates()
+			} else if (result.state === 'denied') {
+					// Notify user that they need to grant permission
+					Alert({type: 'error', message: 'Please grant permission to use location feature.'});
+			}
+	});
+	}
  
 	return (
 		<div className="w-full h-screen">
@@ -123,7 +162,11 @@ export default function SubmitReport() {
 									name: "typeOfWaste",
 									placeholder: "",
 									label: "Type Of Waste",
-									options: ["Sewage", "Refuge", "Street Littering"].map((name) => ({
+									options: ["Hazardous waste",
+          "Construction waste",
+          "Solid waste",
+          "Sewage waste",
+          "Street litter"].map((name) => ({
 										name,
 										value: capitalize(name),
 									})),
@@ -139,10 +182,7 @@ export default function SubmitReport() {
 							<Button
 								className="bg-slate-900 text-white shadow rounded-md w-full h-[40px]"
 								// type={"submit"}
-        onClick={_=> {
-          setModal(true)
-          
-        }}
+        onClick={async _=> getCoordinates()}
 								// disabled={isSubmitting}
         >
 								{" "}
@@ -153,7 +193,7 @@ export default function SubmitReport() {
 				</form>
 			</div>
 
-   <WEBCAM {...{ showModal, setModal, locationId:0, fetchLocation:_=>{} }} />
+   <WEBCAM {...{ showModal, setModal, formData, fetchLocation:_=>{}, cb: checkPermission }} />
 			<Footer />
 		</div>
 	);

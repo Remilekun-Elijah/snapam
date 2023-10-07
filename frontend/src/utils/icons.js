@@ -4,7 +4,7 @@ import Empty from "../assets/images/empty.svg";
 import NotFound from "../assets/images/404.svg";
 import Logout from "../assets/images/logout.svg";
 import Logo from "../assets/images/logo.jpeg";
-import Location from "../assets/images/location-marker.png";
+import Report from "../assets/images/location-marker.png";
 import Waste from "../assets/images/waste-img.png";
 import Map from "../assets/images/map.png";
 
@@ -14,6 +14,6 @@ export const IEmpty = Empty;
 export const INotFound = NotFound;
 export const ILogout = Logout;
 export const ILogo = Logo;
-export const ILocation = Location;
+export const ILocation = Report;
 export const IWaste = Waste;
 export const IMap = Map;

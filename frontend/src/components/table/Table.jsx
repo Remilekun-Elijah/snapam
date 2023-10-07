@@ -153,7 +153,7 @@ export default function Table({
 														className="td truncate text-left capitalize">
 														{typeof value == "string" &&
 														(value.startsWith("https") || value.startsWith("http")) ? (
-															<center><img
+															<img
 															className="cursor-pointer"
 															onClick={_=>window.open(value, "_blank")}
 																src={value}
@@ -163,7 +163,7 @@ export default function Table({
 																	borderRadius: "45px",
 																}}
 																alt="location"
-															/></center>
+															/>
 														) : (
 															value
 														)}
