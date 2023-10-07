@@ -47,7 +47,7 @@ const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
 
 										<Link
 											className="text-end ml-3"
-											to={`/locations/${data._id}`}
+											to={`/report/${data._id}`}
 											state={data}>
 											View Details{" "}
 										</Link>

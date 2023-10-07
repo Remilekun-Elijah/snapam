@@ -31,7 +31,7 @@ export default function LocationDetails() {
 
 					<button
 						className="px-5 py-1 bg-slate-500 hover:bg-slate-900 rounded text-white"
-						onClick={(_) => navigate("/add-new-location", {state})}>
+						onClick={(_) => navigate("/report/submit", {state})}>
 						Edit
 					</button>
 				</div>

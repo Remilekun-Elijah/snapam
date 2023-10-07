@@ -13,6 +13,7 @@ import Report from "../action/location";
 import { capitalize } from "../utils/helper";
 import Select from "../components/Select/Select";
 import TreatReport from "../components/Modal/TreatReport";
+import dayjs from "dayjs";
 
 const Api = new BACKEND();
 
@@ -98,10 +99,9 @@ const ViewLocation = () => {
 								latitude,
 								image, 
 								phoneNumber,
-								createdAt,
+								updatedAt,
 								area,
 								typeOfWaste,
-								updatedAt,
 								lga,
 								isTreated,
 								treatedBy,
@@ -116,8 +116,8 @@ const ViewLocation = () => {
 										"Area.": area || "N/A",
 										"Phone No.": phoneNumber || "N/A",
 										"Treated By": treatedBy ? treatedBy?.name : "None",
+										"Date Treated": treatedBy ? dayjs(updatedAt).format("MMM DD, YYYY") : "N/A",
 										"Status": isTreated ? "Treated" : "Pending",
-										// ...rest,
 										_data: data,
 								  }
 								: {};

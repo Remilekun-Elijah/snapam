@@ -16,7 +16,7 @@ class Menu {
  },) {
   return {  
     text: "Edit",
-    action: (_, data) => navigate('/add-new-location', {state: data})
+    action: (_, data) => navigate('/report/submit', {state: data})
    }
  }
 

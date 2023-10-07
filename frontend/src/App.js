@@ -18,15 +18,14 @@ function App() {
     <BrowserRouter>
     {/* The rest of your app goes here */}
     <Routes>
-      <Route path='/' element={<Login />} />
-        <Route path="/landing/" element={<Landing />} />
+        <Route path="/" element={<Landing />} />
+      <Route path='/admin' element={<Login />} />
         <Route path="/report/submit" element={<SubmitReport />} />
       
        <Route element={<PrivateRoutes />}>
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/add-new-location' element={<AddLocation />} />
         <Route path='/reports' element={<ViewLocation />} />
-        <Route path="/locations/:locationId" element={<LocationDetails />} />
+        <Route path="/report/:reportId" element={<LocationDetails />} />
       </Route>
 
       <Route path='*' element={
