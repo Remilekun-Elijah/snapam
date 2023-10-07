@@ -30,7 +30,7 @@ const Login = () => {
 			Storage.remove("authToken")
 			Storage.set("authToken", res.authToken)
 		
-		Alert({ type: "success", message: res.message, cb: _=> navigate("/dashboard") });
+		Alert({ type: "success", message: res.message, cb: _=> window.location.href = "/dashboard" });
 		}else{ 
 			setSubmitting(false)
 		}
