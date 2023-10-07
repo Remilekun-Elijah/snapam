@@ -29,9 +29,9 @@ const Login = () => {
 		if(res?.success){
 			Storage.remove("authToken")
 			Storage.set("authToken", res.authToken)
-		navigate("/dashboard");
-		Alert({ type: "success", message: res.message });
-		}else{
+		
+		Alert({ type: "success", message: res.message, cb: _=> navigate("/dashboard") });
+		}else{ 
 			setSubmitting(false)
 		}
 	}catch(err){
