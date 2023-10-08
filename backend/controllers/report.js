@@ -65,7 +65,7 @@ class ReportController {
    if (isExist) {
      return res.status(403).json({
      success: false,
-     message: "This waste has already been reported"
+     message: "A waste in this location has already been reported"
     })
    }
    
@@ -255,7 +255,7 @@ class ReportController {
     if(deleted?.image?.split(src)[1]){
       
       const filepath = path.join(__dirname, '../', deleted?.image?.split(src)[1]);
-      
+
       // delete image file
      fs.unlink(filepath).then(v =>{
       console.log(v);

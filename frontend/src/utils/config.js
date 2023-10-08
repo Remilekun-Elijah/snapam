@@ -16,7 +16,7 @@ cloudinary_cloudName:"remilekunelijah",
 }
 
 environment.production = {
- backendUrl: process.env.REACT_APP_API_URL ?? "https://api-mapify.onrender.com",
+ backendUrl: process.env.REACT_APP_API_URL ?? "https://api.snapam.ng/",
  mapbox_token: process.env.REACT_APP_MAPBOX_TOKEN,
  cloudinary_cloudName:"remilekunelijah",
  cloudinary_preset: "ixp9w0hy",
