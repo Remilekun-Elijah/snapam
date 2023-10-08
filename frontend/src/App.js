@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
     {/* The rest of your app goes here */}
     <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={process.env.REACT_APP_USER === "admin" ? <Login /> : <Landing />} />
       <Route path='/admin' element={<Login />} />
         <Route path="/report/submit" element={<SubmitReport />} />
       
