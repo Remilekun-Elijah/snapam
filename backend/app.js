@@ -1,4 +1,5 @@
 const express  = require('express');
+require('text-encoding-utf-8');
 const mongoose = require("mongoose")
 const config = require('./utils/config');
 const app = express();
