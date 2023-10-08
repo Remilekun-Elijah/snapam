@@ -7,7 +7,7 @@ environment.staging = {
 }
 
 environment.development = {
- mongodbUrl: process.env.DB_URL ?? "mongodb+srv://remilekunelijah:09023007389@quiz-db.sqlaq.mongodb.net/snapam?retryWrites=true&w=majority",
+ mongodbUrl: process.env.DB_URL ?? "mongodb+srv://remilekunelijah:09023007389@quiz-db.sqlaq.mongodb.net/snapamprod?retryWrites=true&w=majority",
  port: process.env.PORT || 9000
 }
 
