@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7b764816.css",
+    "main.js": "/static/js/main.b2040af6.js",
+    "static/js/483.af125955.chunk.js": "/static/js/483.af125955.chunk.js",
+    "static/js/787.c4df6f4b.chunk.js": "/static/js/787.c4df6f4b.chunk.js",
+    "static/media/waste-img.png": "/static/media/waste-img.a9beab7f91c4f4b037f1.png",
+    "static/media/map.png": "/static/media/map.93ef13a7efcc4aac35a9.png",
+    "static/media/location-marker.png": "/static/media/location-marker.488ef4a9284dfd3ddd6e.png",
+    "static/media/marker.png": "/static/media/marker.b798fed3ba70339545aa.png",
+    "static/media/ahronbd.ttf": "/static/media/ahronbd.df42f2ec74adbc10434a.ttf",
+    "static/media/Amasis MT Std Black.otf": "/static/media/Amasis MT Std Black.81623eb0bfd1e0ccbb93.otf",
+    "static/media/404.svg": "/static/media/404.bdf1c60c297dc6528f56fe6a382dacdf.svg",
+    "static/media/logo.jpeg": "/static/media/logo.c2cba24a65779cd35cec.jpeg",
+    "static/media/empty.svg": "/static/media/empty.810627350e9ed2c1d963d2fe1dfac495.svg",
+    "index.html": "/index.html",
+    "static/media/logout.svg": "/static/media/logout.e3ff0140aeaf2258530cedf304b272b5.svg",
+    "static/media/success.svg": "/static/media/success.7c36b4f081bcb831850ba7568d77b7b2.svg",
+    "static/media/arrow-back.svg": "/static/media/arrow-back.a3961d3fbc4463ac45e550cb4dc65e7f.svg",
+    "main.7b764816.css.map": "/static/css/main.7b764816.css.map",
+    "main.b2040af6.js.map": "/static/js/main.b2040af6.js.map",
+    "483.af125955.chunk.js.map": "/static/js/483.af125955.chunk.js.map",
+    "787.c4df6f4b.chunk.js.map": "/static/js/787.c4df6f4b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b764816.css",
+    "static/js/main.b2040af6.js"
+  ]
+}
