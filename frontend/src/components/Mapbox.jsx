@@ -9,6 +9,7 @@ import BACKEND from '../utils/backend';
 import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 
+
 const Mapbox = ({reports}) => {
  const [pop, setPop] = useState(false)
  // mapboxgl.accessToken = config.mapbox_token;
@@ -34,7 +35,7 @@ useEffect(()=> {
 
   new BACKEND({}).send({
    type: 'get',
-   to: `https://api.mapbox.com/geocoding/v5/mapbox.places/${coords[0]},${coords[1]}.json?access_token=${config.mapbox_token}`,
+   to: `https://api.mapbox.com/geocoding/v5/mapbox.places/${coords?.[0]},${coords?.[1]}.json?access_token=${config.mapbox_token}`,
    useAlert: false
   })
   .then(res=> {
@@ -58,7 +59,6 @@ useEffect(()=> {
     <FullscreenControl />
     <NavigationControl />
     {reports?.map((report, idx) => <Marker style={{cursor: "pointer"}} color={!report.isTreated && 'red'} onClick={_=>{
-     console.log(coords?.[0] !== report?.longitude&& coords?.[1] !== report?.latitude) 
      if(coords?.[0] !== report?.longitude&& coords?.[1] !== report?.latitude){
 
       setCoords([report?.longitude, report?.latitude])
@@ -71,7 +71,7 @@ useEffect(()=> {
                {loading ? <div className="flex flex-col">
                  
                 <img
-						src={report.image}
+						src={report?.image}
       style={{maxHeight: "400px"}}
 						alt=""
 					/>
@@ -80,7 +80,7 @@ useEffect(()=> {
 									<span className='text-sm capitalize'>{report?.area}</span>
 									<span className='text-sm capitalize'>{report?.lga}</span>
 									<div className="flex justify-between flex-wrap mt-3">
-											{report.isTreated ? 
+											{report?.isTreated ? 
            <div className="flex">
            <DeleteSweepIcon fontSize='small' color='success'/> <p className='ml-1 text-warning'>Treated</p>
            </div>
