@@ -15,6 +15,7 @@ const locationSchema = joi.object({
  lga: joi.string().required(),
  typeOfWaste: joi.string().required(),
  area: joi.string().required(),
+ address: joi.string().required(),
 })
 
 class ReportController {
@@ -65,10 +66,6 @@ class ReportController {
      message: "This waste has already been reported"
     })
    }
-
-   
-   // req.body.image = ReportController.generateImgUrl(req, res, req.body.image)
-
    
   const buffer = Buffer.from(req.body.image, "base64");
 

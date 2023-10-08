@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Link } from "react-router-dom";
 import Loader from "./Loader/Loader";
 import './Map.css'
 import L from 'leaflet'
-import BACKEND from '../utils/backend';
 import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
-import config from "../utils/config";
 
 const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
 
@@ -34,7 +32,7 @@ const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
 								if(report?.isTreated === false) prop.icon = iconMarker
 								else prop = {}
 
-								
+
 				return (
           <Marker   {...{ ...prop, key, position: { lat: report.latitude, lng: report.longitude } }} >
 						{/* {pop === key &&  */}
@@ -46,6 +44,10 @@ const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
 							style={{width: '100%', 	 maxHeight: "400px"}}
 							alt=""
 						/>
+						{report?.address &&<>
+						<span className='text-[12px]'>{report?.address}</span>
+						<br />
+						</>}
 										<span className='text-sm capitalize mt-1'>{report?.area}</span>
 										<span className='text-sm capitalize'>{report?.lga}</span>
 										<div className="flex justify-between items-center mt-3">

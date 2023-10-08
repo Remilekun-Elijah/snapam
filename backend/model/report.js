@@ -11,6 +11,7 @@ const reportSchema = new Schema({
  typeOfWaste: String,
  phoneNumber: String,
  lga: String,
+ address: String,
  area: String,
  isTreated: {
   type: Boolean,

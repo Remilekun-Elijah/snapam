@@ -18,6 +18,7 @@ export default function SubmitReport() {
 	const navigate = useNavigate(),
 	{ state } = useLocation(),
 	values = {
+		address: "",
   longitude: '',
   latitude: '',
 		image: "",
@@ -39,7 +40,7 @@ export default function SubmitReport() {
 		// setSubmit(true);
 		try {
 			// const res = state ? await Report.edit(formData, _id) : await Report.add(formData)
-
+			await getCoordinates()
 			// if (res?.success) {
 			// 	Alert({ type: "success", message: res?.message });
 			// 	navigate("/dashboard");
@@ -119,10 +120,19 @@ export default function SubmitReport() {
 								placeholder={" "}
 								wrapperClass={"mt-5 input__two"}
 								inputClass={"shadow"}
-								// required={true}
+								required={true}
 								onChange={addData}
 							/>
-
+<Input
+								value={formData.address}
+								name={"address"}
+								label={"Address"}
+								placeholder={" "}
+								wrapperClass={"mt-5 input__two"}
+								inputClass={"shadow"}
+								required={true}
+								onChange={addData}
+							/>
 							<SelectTwo
 								{...{
 									value: formData.lga,
@@ -146,10 +156,10 @@ export default function SubmitReport() {
 								label={"Area"}
 								minLength={2}
 								type={"text"}
-								placeholder={" "}
+								placeholder={" E.g Ikosi"}
 								wrapperClass={"mt-5 input__two z-0"}
 								inputClass={"shadow"}
-								// required={true}
+								required={true}
 								onChange={addData}
 							/>
 
@@ -167,6 +177,7 @@ export default function SubmitReport() {
 										name,
 										value: capitalize(name),
 									})),
+									required: true,
 									wrapperClass: "mt-5 input__two",
 									onChange: (_, { value }) =>
 										setFormData((state) => ({ ...state, typeOfWaste: value })),
@@ -178,8 +189,8 @@ export default function SubmitReport() {
 						<div className="flex mx-auto justify-center  my-10 w-full">
 							<Button
 								className="bg-slate-900 text-white shadow rounded-md w-full h-[40px]"
-								// type={"submit"}
-        onClick={async _=> getCoordinates()}
+								type={"submit"}
+        // onClick={async _=> }
 								// disabled={isSubmitting}
         >
 								{" "}

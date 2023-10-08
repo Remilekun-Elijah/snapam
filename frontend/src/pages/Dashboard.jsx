@@ -139,7 +139,7 @@ const Dashboard = () => {
 			<div className="flex justify-center">
 				<Map {...{ center, mapData, setModal, setLocationId, isLoading }} />
 
-				{/* <Mapbox {...{reports: mapData}}/> */}
+				<Mapbox {...{reports: mapData}}/>
 			</div>
 
 			{/* <WEBCAM {...{ showModal, setModal, locationId, fetchReports }} /> */}
