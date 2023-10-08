@@ -18,16 +18,16 @@ export default function SubmitReport() {
 	const navigate = useNavigate(),
 	{ state } = useLocation(),
 	values = {
-		address: "14 ademola oshinowo",
-  longitude: 3.3892993,
-  latitude: 6.598928,
+		address: "",
+  longitude: '',
+  latitude: '',
 		image: "",
-		typeOfWaste: "Hazardous Waste",
-		area: "Ikosi",
-		phoneNumber: "09023007389",
-		lga: "Kosofe",
+		typeOfWaste: "",
+		area: "",
+		phoneNumber: "",
+		lga: "",
 	},
-	// {__v, _id, createdAt, updatedAt, image} = state || {},
+	
  [showModal, setModal] = useState(false),
 	[formData, setFormData] = React.useState(values);
 	
@@ -37,19 +37,9 @@ export default function SubmitReport() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// setSubmit(true);
 		try {
-			// const res = state ? await Report.edit(formData, _id) : await Report.add(formData)
 			await getCoordinates()
-			// if (res?.success) {
-			// 	Alert({ type: "success", message: res?.message });
-			// 	navigate("/dashboard");
-			// 	setSubmit(false);
-			// } else {
-			// 	setSubmit(false);
-			// }
 		} catch (err) {
-			// setSubmit(false);
 			console.error(err);
 		}
 	};
