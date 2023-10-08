@@ -13,7 +13,7 @@ const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
 
 
 	return (
-    <div className="relative flex justify-center w-full">
+    <div className="mt-10  relative flex justify-center w-full">
 		<MapContainer
 			className="z-0 border border-gray-700 map relative"
 			center={center}
