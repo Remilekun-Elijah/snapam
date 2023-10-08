@@ -8,7 +8,7 @@ cloudinary_cloudName:"remilekunelijah",
 }
 
 environment.staging = {
- backendUrl: process.env.REACT_APP_API_URL ?? "https://api-staging-mapify.onrender.com",
+ backendUrl: process.env.REACT_APP_API_URL ?? "https://snapam-api.onrender.com",
  mapbox_token: process.env.REACT_APP_MAPBOX_TOKEN,
 cloudinary_cloudName:"remilekunelijah",
  cloudinary_preset: "ixp9w0hy",

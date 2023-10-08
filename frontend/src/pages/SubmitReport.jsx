@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { capitalize, lgas } from "../utils/helper";
 import Input from "../components/Input/InputOne";
 import styled from "styled-components";
@@ -8,7 +8,6 @@ import Alert from "../utils/alert";
 import { IArrowBack } from "../utils/icons";
 import SelectTwo from "../components/Select/SelectTwo";
 import Footer from "../components/Footer";
-import Report from "../action/location";
 import WEBCAM from "../components/Camera";
 
 
@@ -17,7 +16,6 @@ const Button = styled.button``;
 export default function SubmitReport() {
 	
 	const navigate = useNavigate(),
-	[isSubmitting, setSubmit] = React.useState(false),
 	{ state } = useLocation(),
 	values = {
   longitude: '',
@@ -28,7 +26,7 @@ export default function SubmitReport() {
 		phoneNumber: "",
 		lga: "",
 	},
-	{__v, _id, createdAt, updatedAt, image} = state || {},
+	// {__v, _id, createdAt, updatedAt, image} = state || {},
  [showModal, setModal] = useState(false),
 	[formData, setFormData] = React.useState(values);
 	
@@ -59,7 +57,6 @@ export default function SubmitReport() {
 		await navigator.geolocation.getCurrentPosition(
 			position => {
 				
-				console.log(position.coords);
 				if(position.coords){
 					
 					setFormData((state) => ({ ...state, latitude: position?.coords?.latitude, longitude: position?.coords?.longitude }));

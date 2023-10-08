@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from 'react';
 // import mapboxgl from 'mapbox-gl';
 import ReactMapGl, { FullscreenControl, GeolocateControl, Marker, NavigationControl, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import config from '../utils/config';
-import RoomIcon from '@mui/icons-material/Room';
 import { Link } from 'react-router-dom';
 import BACKEND from '../utils/backend';
 import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
@@ -29,8 +29,6 @@ const [ viewState, setViewState ] = useState({longitude: 	8.675277, latitude: 9.
 popRef = useRef(null)
 
 useEffect(()=> {
- const longitude = "8.675277"
- const latitude = "9.081999"
  setLoading(true)
  if(coords.length){
 

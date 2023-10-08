@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import WEBCAM from "../components/Camera";
+// import WEBCAM from "../components/Camera";
+// import Map from "../components/Map";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Map from "../components/Map";
 import Select from "../components/Select/Select";
 import { capitalize, format, lgas } from "../utils/helper";
 import Alert from "../utils/alert";
@@ -24,14 +24,14 @@ const optionsArea = ["Area", ...lgas];
 
 const Dashboard = () => {
 	const [mapData, setMapData] = React.useState([]);
-	const [locationId, setLocationId] = React.useState("");
-	const [showModal, setModal] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
 	const navigate = useNavigate();
-	const center = {
-		lat: 6.458985,
-		lng: 3.601521,
-	};
+	// const [locationId, setLocationId] = React.useState("");
+	// const [showModal, setModal] = useState(false);
+	// const [isLoading, setIsLoading] = useState(false);
+	// const center = {
+	// 	lat: 6.458985,
+	// 	lng: 3.601521,
+	// };
 
 	const [pagination, setPagination] = React.useState({
 		lga: "",
@@ -39,10 +39,10 @@ const Dashboard = () => {
 	});
 
 	let fetchReports = (_) => {
-		setIsLoading(true)
+		// setIsLoading(true)
 		Report.getAll(pagination)
 			.then((res) => {
-				setIsLoading(false)
+				// setIsLoading(false)
 				if (res.success) {
 					setMapData(res?.data?.reports);
 				} else {

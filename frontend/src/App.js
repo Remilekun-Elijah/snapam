@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import AddLocation from './pages/AddLocation';
 import ViewLocation from './pages/ViewLocation';
 import { INotFound } from './utils/icons';
 import Button from './components/Button';

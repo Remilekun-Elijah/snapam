@@ -1,20 +1,8 @@
 import React from 'react';
-import { RiLogoutCircleLine } from 'react-icons/ri';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import { ILocation, ILogo } from '../utils/icons';
 
-const Container = styled.div`
- padding: 5px 10%;
-`,
-Logo = styled.h1``
 
 const Header = () => {
-const navigate = useNavigate();
-  const logout = e => {
-    localStorage.removeItem("authToken")
-    navigate("/")
-  }
 
  return (
   <div >

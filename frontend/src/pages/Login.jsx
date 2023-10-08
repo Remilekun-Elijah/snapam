@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
 import Alert from "../utils/alert";
 import BACKEND from "../utils/backend";
 import Storage from "../utils/storage";
@@ -9,7 +8,6 @@ import Footer from "../components/Footer";
 const backend = new BACKEND();
 
 const Login = () => {
-	const navigate = useNavigate();
 	const [isSubmitting, setSubmitting] = React.useState(false)
 
 	async function handleSubmit(e) {
