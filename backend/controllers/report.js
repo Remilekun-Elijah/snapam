@@ -1,6 +1,8 @@
 const Jimp = require("jimp")
 const joi = require('joi');
 const Report = require("../model/report");
+const path = require('path')
+const fs = require('fs/promises')
 
 const locationSchema = joi.object({
  // description: joi.string().required(),
@@ -242,9 +244,23 @@ class ReportController {
 
  static async deleteOne(req, res, next) {
   try {
-   const deleted = await Report.findByIdAndDelete(req.params.id, {
-    new: true
-   })
+    
+    const deleted = await Report.findByIdAndDelete(req.params.id, {
+      new: true
+    })
+
+    let src = process.env.NODE_ENV === 'development' ? `${req.protocol}://${req.hostname}:9000` : `${req.protocol}://${req.hostname}`;
+
+
+    if(deleted?.image?.split(src)[1]){
+      
+      const filepath = path.join(__dirname, '../', deleted?.image?.split(src)[1]);
+      
+      // delete image file
+     fs.unlink(filepath).then(v =>{
+      console.log(v);
+     })
+   }
    if (deleted) res.status(200).json({
     success: true,
     data: deleted,
@@ -255,6 +271,7 @@ class ReportController {
     message: "Failed to delete report, please try again"
    });
   } catch (error) {
+    console.log(error);
    res.status(500).json({
     success: false,
     message: "Failed to delete report, please try again",

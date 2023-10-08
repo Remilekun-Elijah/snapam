@@ -19,8 +19,7 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.4",
-    "nodemon": "^2.0.19",
-    "text-encoding-utf-8": "^1.0.2"
+    "nodemon": "^2.0.19"
   },
   "devDependencies": {
     "dotenv": "^16.0.2"
