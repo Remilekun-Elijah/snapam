@@ -9,13 +9,15 @@ cloudinary_cloudName:"remilekunelijah",
 
 environment.staging = {
  backendUrl: process.env.REACT_APP_API_URL ?? "https://api-staging-mapify.onrender.com",
+ mapbox_token: process.env.REACT_APP_MAPBOX_TOKEN,
 cloudinary_cloudName:"remilekunelijah",
  cloudinary_preset: "ixp9w0hy",
- cloudinary_folder: "Mapify"
+ cloudinary_folder: "Mapify",
 }
 
 environment.production = {
  backendUrl: process.env.REACT_APP_API_URL ?? "https://api-mapify.onrender.com",
+ mapbox_token: "pk.eyJ1IjoicmVtaWxla3VuLWVsaWphaCIsImEiOiJjbG5mdGluODMwZHdwMmltaXZhdnBqczk3In0.QUbTz4zh9_NUKcoi2YdDbg",
  cloudinary_cloudName:"remilekunelijah",
  cloudinary_preset: "ixp9w0hy",
  cloudinary_folder: "Mapify"
