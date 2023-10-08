@@ -3,7 +3,8 @@ environment.development = {
  backendUrl: "http://localhost:9000",
 cloudinary_cloudName:"remilekunelijah",
  cloudinary_preset: "ixp9w0hy",
- cloudinary_folder: "Mapify"
+ cloudinary_folder: "Mapify",
+ mapbox_token: "pk.eyJ1IjoicmVtaWxla3VuLWVsaWphaCIsImEiOiJjbG5mdGluODMwZHdwMmltaXZhdnBqczk3In0.QUbTz4zh9_NUKcoi2YdDbg"
 }
 
 environment.staging = {

@@ -11,6 +11,7 @@ import Alert from "../utils/alert";
 import { FiSearch } from "react-icons/fi";
 import styled from "styled-components";
 import Report from "../action/location";
+import Mapbox from "../components/Mapbox";
 
 const SearchBoxDiv = styled.div`
 		border: 1px solid #a5adba;
@@ -59,6 +60,7 @@ const Dashboard = () => {
 
 	React.useEffect(() => {
 		fetchReports();
+		console.log(mapData);
 	}, [pagination.lga, pagination.search]);
 
 	return (
@@ -134,7 +136,9 @@ const Dashboard = () => {
 			</div>
 
 			<div className="flex justify-center">
-				<Map {...{ center, mapData, setModal, setLocationId, isLoading }} />
+				{/* <Map {...{ center, mapData, setModal, setLocationId, isLoading }} /> */}
+
+				<Mapbox {...{reports: mapData}}/>
 			</div>
 
 			{/* <WEBCAM {...{ showModal, setModal, locationId, fetchLocation }} /> */}

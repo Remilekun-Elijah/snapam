@@ -2,7 +2,8 @@ import React from "react";
 import { MdLocationOn, MdOutlineLocationCity } from "react-icons/md";
 import { FaUserAlt, FaMobile } from "react-icons/fa";
 import { RiChatPollFill, RiGovernmentFill } from "react-icons/ri";
-
+import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
+import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -126,6 +127,23 @@ export default function LocationDetails() {
 										<p className="ml-2 text-gray-600">Reporters Tel.</p>
 									</td>
 									<td>{state.phoneNumber || "N/A"}</td>
+								</tr>
+
+								<tr className="invisible">
+									<td>place</td>
+								</tr>
+
+								<tr className="mt-20 pt-20">
+										<td className="flex ml-1 mr-5">
+										{state.isTreated ?
+										<DeleteSweepIcon size='26' color='success'/>
+										:
+											<AutoDeleteIcon size='26' color='success'/>
+											}
+										 <p className='ml-2 text-gray-600'>Status</p>
+											</td>
+									<td className="">{state.isTreated ? "Treated" : "Pending"}
+									</td>
 								</tr>
 							</tbody>
 						</table>
