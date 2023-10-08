@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Link } from "react-router-dom";
 import Loader from "./Loader/Loader";
 import './Map.css'
+import L from 'leaflet'
+import BACKEND from '../utils/backend';
+import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
+import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
+import config from "../utils/config";
 
 const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
+
+
+
+
 	return (
     <div className="relative flex justify-center w-full">
 		<MapContainer
@@ -16,45 +25,48 @@ const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
 				attribution='&copy; <a href="https://wredww.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
-			{mapData.map((data, key) => {
-        const { description, image, longitude, latitude } = data;
-        
-				return (
-          <Marker {...{ key, position: { lat: latitude, lng: longitude } }}>
-						<Popup>
-							{
-                <div className="flex flex-col">
-									<span>{description}</span>
-									<div className="flex justify-between">
-										{/* {image ? ( */}
-											<a
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-end"
-                      href={image}>
-												Open image{" "}
-											</a>
-										{/* ) : (
-                      <span
-                      className="text-end text-blue-700 cursor-pointer"
-                      onClick={(_) => {
-                        setLocationId(data._id);
-                        setModal(true);
-                      }}>
-												Upload Image
-											</span> */}
-										{/* } */}
+			{mapData?.map((report, key) => {
+				const iconMarker = new L.icon({
+					iconUrl: require('../assets/images/marker.png'),
+					iconSize: [45, 50]
+				})
+        let prop = {}
+								if(report?.isTreated === false) prop.icon = iconMarker
+								else prop = {}
 
-										<Link
-											className="text-end ml-3"
-											to={`/report/${data._id}`}
-											state={data}>
-											View Details{" "}
-										</Link>
-									</div>
-								</div>
-							}
+								
+				return (
+          <Marker   {...{ ...prop, key, position: { lat: report.latitude, lng: report.longitude } }} >
+						{/* {pop === key &&  */}
+						<Popup latitude={report?.latitude} longitude={report?.longitude}>
+						{ <div className="flex flex-col">
+                 
+																	<img
+							src={report?.image}
+							style={{width: '100%', 	 maxHeight: "400px"}}
+							alt=""
+						/>
+										<span className='text-sm capitalize mt-1'>{report?.area}</span>
+										<span className='text-sm capitalize'>{report?.lga}</span>
+										<div className="flex justify-between items-center mt-3">
+												{report?.isTreated ? 
+												<div className="flex items-center">
+												<DeleteSweepIcon fontSize='small' color='success'/> <p className='ml-2 text-warning'>Treated</p>
+												</div>
+												: <div className="flex items-center">
+												<AutoDeleteIcon fontSize='small' color='error'/> <p className='ml-2 text-warning'>Pending</p>
+												</div>}
+	
+											<Link
+												className="text-end ml-3"
+												to={`/report/${report._id}`}
+												state={report}>
+												View Details{" "}
+											</Link>
+										</div>
+																	</div>}
 						</Popup>
+						
 					</Marker>
 				);
 			})}

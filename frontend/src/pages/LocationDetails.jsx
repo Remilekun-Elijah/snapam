@@ -1,13 +1,16 @@
 import React from "react";
 import { MdLocationOn, MdOutlineLocationCity } from "react-icons/md";
 import { FaUserAlt, FaMobile } from "react-icons/fa";
-import { RiChatPollFill, RiGovernmentFill } from "react-icons/ri";
+import { RiGovernmentFill } from "react-icons/ri";
 import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { IArrowBack } from "../utils/icons";
+import { Button } from "@mui/material";
+import RoomIcon from '@mui/icons-material/Room'
+import RecyclingIcon from '@mui/icons-material/Recycling';
 
 export default function LocationDetails() {
 	const navigate = useNavigate();
@@ -48,7 +51,31 @@ export default function LocationDetails() {
      </div>
      }
 
-					<div className="mt-8">
+<div className="hidden  flex-wra gap-10">
+					<div className="flex gap-2">
+					<MdOutlineLocationCity title="Address" size="24" color="green" />{" "}
+										<p className="ml-2 text-gray-600">Area</p>
+					</div>
+
+					<div className="flex w-full">
+						<div className="flex gap-2">
+					<MdOutlineLocationCity title="Address" size="24" color="green" />{" "}
+										<p className="ml-2 text-gray-600">Area</p>
+						</div>
+
+						<td>{state.area || "N/A"}</td>
+					</div>
+
+					<div className="flex justify-between w-ful">
+						<div className="flex gap-2">
+					<MdOutlineLocationCity title="Address" size="24" color="green" />{" "}
+										<p className="ml-2 text-gray-600">Area</p>
+						</div>
+						<td>{state.area || "N/A"}</td>
+					</div>
+</div>
+
+					<div className="mt-8 ">
 						<table>
 							<thead>
 								<tr className="invisible">
@@ -83,20 +110,20 @@ export default function LocationDetails() {
 								<tr className="mt-20 pt-20">
 									<td className="flex mr-5">
 										<MdLocationOn size="24" color="green" />{" "}
-										<p className="ml-2 text-gray-600">Coordinates</p>
+										<p className="ml-2 text-gray-600">Location</p>
 									</td>
 									<td>
-										{state.latitude}, {state.longitude}
+										<Button startIcon={_=><RoomIcon/>} target="_blank" rel={"noreferrer"} variant="text" className="capitalize" href={`https://www.google.com/maps?q=${state.latitude},${state.longitude}`} sx={{textTransform: 'capitalize'}}> Open On Google Map</Button>
 									</td>
 								</tr>
-
-								<tr className="invisible">
+<br/>
+								{/* <tr className="invisible">
 									<td>place</td>
-								</tr>
+								</tr> */}
 
-								<tr className="mt-20 pt-20">
+								<tr className="m-10 pt-0">
 									<td className="flex mr-5">
-										<RiChatPollFill size="24" color="green" />{" "}
+										<RecyclingIcon size="24" color="green" />{" "}
 										<p className="ml-2 text-gray-600">Type of Waste</p>
 									</td>
 

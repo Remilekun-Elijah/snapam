@@ -32,7 +32,7 @@ static bulkDelete(locationIds){
 static async getAll(pagination) {
  return this.API.send({
   type: "get",
-  to: `/location/?lga=${pagination.lga}&search=${pagination.search}`,
+  to: `/location/?lga=${pagination.lga}&status=${pagination.status}&search=${pagination.search}`,
   useAlert: false,
  })
 }

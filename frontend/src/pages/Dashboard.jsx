@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import WEBCAM from "../components/Camera";
-// import Map from "../components/Map";
+import Map from "../components/Map";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Select from "../components/Select/Select";
@@ -25,24 +25,25 @@ const optionsArea = ["Area", ...lgas];
 const Dashboard = () => {
 	const [mapData, setMapData] = React.useState([]);
 	const navigate = useNavigate();
-	// const [locationId, setLocationId] = React.useState("");
-	// const [showModal, setModal] = useState(false);
-	// const [isLoading, setIsLoading] = useState(false);
-	// const center = {
-	// 	lat: 6.458985,
-	// 	lng: 3.601521,
-	// };
+	const [locationId, setLocationId] = React.useState("");
+	const [showModal, setModal] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const center = {
+		lat: 6.458985,
+		lng: 3.601521,
+	};
 
 	const [pagination, setPagination] = React.useState({
 		lga: "",
 		search: "",
+		status: ""
 	});
 
 	let fetchReports = (_) => {
-		// setIsLoading(true)
+		setIsLoading(true)
 		Report.getAll(pagination)
 			.then((res) => {
-				// setIsLoading(false)
+				setIsLoading(false)
 				if (res.success) {
 					setMapData(res?.data?.reports);
 				} else {
@@ -58,10 +59,10 @@ const Dashboard = () => {
 		setPagination(state=> ({lga, search}));
 	}
 
+	
 	React.useEffect(() => {
 		fetchReports();
-		console.log(mapData);
-	}, [pagination.lga, pagination.search]);
+	}, [pagination.lga, pagination.search, pagination.status]);
 
 	return (
 		<div className="h-screen overflowX-hidden">
@@ -102,21 +103,21 @@ const Dashboard = () => {
 							onChange,
 						}}
 					/>
-					{/* </div> */}
-					{/* <div className="flex"> */}
-					{/* <p className="mr-2">Filter by</p> */}
+					
+					{/* <p className="mr-2">Filter by</p>
 					<Select
 						{...{
-							options: optionsArea.map((name) => ({
+							wrapperClass: 'mx-5',
+							options: ["Status", "Treated", "Pending"].map((name) => ({
 								name,
-								value: name === "Area" ? "" : capitalize(name),
+								value: name === "Status" ? "" : capitalize(name),
 							})),
-							value: pagination.lga,
-							selectClass: "bg-[#eee] shadow-md py-1 mt-0",
-							name: "area",
-							onChange,
+							value: pagination.status,
+							selectClass: "bg-[#eee] shadow-md py-1",
+							name: "status",
+							onChange: e => setPagination({...pagination, status: e.target.value}),
 						}}
-					/>
+					/> */}
 					</div>
 				</div>
 				<SearchBoxDiv className="md:w-[35%] w-full py-1 mt-1 px-5 bg-white shadow  rounded-lg flex justify-between items-center">
@@ -136,12 +137,12 @@ const Dashboard = () => {
 			</div>
 
 			<div className="flex justify-center">
-				{/* <Map {...{ center, mapData, setModal, setLocationId, isLoading }} /> */}
+				<Map {...{ center, mapData, setModal, setLocationId, isLoading }} />
 
-				<Mapbox {...{reports: mapData}}/>
+				{/* <Mapbox {...{reports: mapData}}/> */}
 			</div>
 
-			{/* <WEBCAM {...{ showModal, setModal, locationId, fetchLocation }} /> */}
+			{/* <WEBCAM {...{ showModal, setModal, locationId, fetchReports }} /> */}
 			<Footer />
 		</div>
 	);

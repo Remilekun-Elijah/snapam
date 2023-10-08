@@ -99,6 +99,7 @@ const ViewLocation = () => {
 								latitude,
 								image, 
 								phoneNumber,
+								createdAt,
 								updatedAt,
 								area,
 								typeOfWaste,
@@ -117,6 +118,7 @@ const ViewLocation = () => {
 										"Phone No.": phoneNumber || "N/A",
 										"Treated By": treatedBy ? treatedBy?.name : "None",
 										"Date Treated": treatedBy ? dayjs(updatedAt).format("MMM DD, YYYY") : "N/A",
+										"Date Reported":  dayjs(createdAt).format("MMM DD, YYYY"),
 										"Status": isTreated ? "Treated" : "Pending",
 										_data: data,
 								  }
@@ -198,9 +200,9 @@ const ViewLocation = () => {
 								name,
 								value: name === "Status" ? "" : capitalize(name),
 							})),
-							value: pagination.lga,
+							value: pagination.status,
 							selectClass: "bg-[#eee] shadow-md py-1",
-							name: "lga",
+							name: "status",
 							onChange: e => setPagination({...pagination, status: e.target.value}),
 						}}
 					/>

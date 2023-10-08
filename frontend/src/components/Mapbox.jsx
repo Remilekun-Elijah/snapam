@@ -9,7 +9,6 @@ import BACKEND from '../utils/backend';
 import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 
-
 const Mapbox = ({reports}) => {
  const [pop, setPop] = useState(false)
  // mapboxgl.accessToken = config.mapbox_token;
@@ -22,8 +21,8 @@ const Mapbox = ({reports}) => {
 // });
 
 const [place, setPlace] = useState(null),
-[loading, setLoading] = useState(false),
-[coords, setCoords] = useState([])
+[coords, setCoords] = useState([]),
+[loading, setLoading] = useState(false);
 
 const [ viewState, setViewState ] = useState({longitude: 	8.675277, latitude: 9.081999, zoom: 6}),
 // 8.064964, 8.772062
