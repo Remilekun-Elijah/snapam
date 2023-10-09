@@ -17,7 +17,7 @@ const Header = () => {
      <div className='text-white flex-col items-center flex justify-center'>
      <div className='flex items-center'>
      <img src={IBrand} alt=""  className='md:w-[140px]  w-[100px] sm:h-full h-[50px]'/>
-     <h1 className='sm:text-3xl md:text-7xl text-2xl'><span className="text-[yellow]">SNA</span><span className="text-[green]">PAM</span></h1>
+     <h1 className='sm:text-3xl md:text-7xl text-2xl philosopher'><span className="text-[yellow]">SNA</span><span className="text-[green]">PAM</span></h1>
      </div> 
 
      <p className='md:text-lg text-[10px] mt-0 pt-0 amasis'>An initiative to locate and remove street waste

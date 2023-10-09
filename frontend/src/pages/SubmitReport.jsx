@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import { useNavigate, useLocation } from "react-router-dom";
 import Alert from "../utils/alert";
-import { IArrowBack } from "../utils/icons";
+import { IArrowBack, IStreetWasteBg } from "../utils/icons";
 import SelectTwo from "../components/Select/SelectTwo";
 import Footer from "../components/Footer";
 import WEBCAM from "../components/Camera";
@@ -81,12 +81,19 @@ export default function SubmitReport() {
 	}
  
 	return (
-		<div className="w-full h-screen">
+		<div className="w-full">
 			<Header />
 
-			<div className=" flex justify-center px mt-16">
+			<div className="flex justify-center px mt- relative sm:h-ful h-[800px] overflow-y-hidden">
+							<img
+								src={IStreetWasteBg}
+								className="w-full"
+								alt=""
+							/>
+			<div className="absolute bg-[rgba(0,0,0,.5)] top-0 left-0 right-0 bottom-0 w-ful h-full z-10 flex justify-center items-center">
+							
 				<form
-					className="modal__one rounded-2xl  md:w-[600px] w-[80%]  border-0  mb-10"
+					className="modal__one rounded-2xl bg-[rgba(255,255,255,.7)] md:w-[600px] w-[80%]  border-0  my-10 p-5"
 					onSubmit={handleSubmit}>
 					<div className="mt-5">
 						<div className="my- flex items-center mb-10 ">
@@ -188,6 +195,7 @@ export default function SubmitReport() {
 						</div>
 					</div>
 				</form>
+				</div>
 			</div>
 
    <WEBCAM {...{ showModal, setModal, formData, fetchLocation:_=>{}, cb: checkPermission }} />

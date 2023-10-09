@@ -2,7 +2,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import React from "react";
-import { ILogo, IStreetWaste, IWaste } from "../utils/icons";
+import { ILogo, IStreetWaste, IWaste, IHazardous, IConstruction, ISewage, IStreet, ISolid } from "../utils/icons";
 import Header from "../components/Header";
 import { Button, Card, CardActionArea, CardContent, CardMedia, Chip, Divider, Typography } from "@mui/material";
 import Footer from "../components/Footer";
@@ -15,7 +15,7 @@ const Home = () => {
 			<section className="bg py px-">
 				<Carousel
 					infiniteLoop
-					// autoPlay
+					autoPlay
 					showStatus
 					showThumbs={false}
 					showIndicators={false}
@@ -33,7 +33,7 @@ const Home = () => {
 								<div className="caption z-50 text-black">
         <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Hazardous</span> waste</p>
 									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="secondary" size="large" sx={{ background: 'black', color: 'white', px: { sm: "40px" }}}> Report Waste</Button>
+         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
 								</div>
 							</div>
 						</div>
@@ -49,7 +49,7 @@ const Home = () => {
 								<div className="caption z-50 text-black">
         <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Street</span> Littering</p>
 									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="secondary" size="large" sx={{ background: 'black', color: 'white', px: { sm: "40px" }}}> Report Waste</Button>
+         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
 								</div>
 							</div>
 						</div>
@@ -65,7 +65,7 @@ const Home = () => {
 								<div className="caption z-50 text-black">
         <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Construction</span> waste</p>
 									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="secondary" size="large" sx={{ background: 'black', color: 'white', px: { sm: "40px" }}}> Report Waste</Button>
+         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
 								</div>
 							</div>
 						</div>
@@ -81,7 +81,7 @@ const Home = () => {
 								<div className="caption z-50 text-black">
         <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Sewage</span> Waste</p>
 									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="secondary" size="large" sx={{ background: 'black', color: 'white', px: { sm: "40px" }}}> Report Waste</Button>
+         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
 								</div>
 							</div>
 						</div>
@@ -97,7 +97,7 @@ const Home = () => {
 								<div className="caption z-50 text-black">
         <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Solid</span> Waste</p>
 									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="secondary" size="large" sx={{ background: 'black', color: 'white', px: { sm: "40px" }}}> Report Waste</Button>
+         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
 								</div>
 							</div>
 						</div>
@@ -117,18 +117,19 @@ const Home = () => {
 
 
    <div className="flex justify-around  gap-x-5 gap-y-10 flex-wrap">
-   {["Hazardous waste",
-          "Construction waste",
-          "Solid waste",
-          "Sewage waste",
-          "Street litter"].map(name=> {
+   {[{name: "Hazardous waste", url: IHazardous},
+          {name: "Construction waste", url: IConstruction},
+          {name: "Solid waste", url: ISolid},
+          {name: "Sewage waste", url: ISewage},
+          {name: "Street litter", url: IStreet}].map(({name, url})=> {
     return <>
      <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
-          image={IStreetWaste}
+          // height="140"
+          sx={{height: '230px'}}
+          image={url}
           alt="green iguana"
         />
         <CardContent>
@@ -154,7 +155,7 @@ const Home = () => {
   </Divider>
 
   <div className="flex justify-center mt-5">
-  <Button variant="contained" component={Link} to="/report/submit" color="secondary" size="large" sx={{ background: 'black', color: 'white', px: { sm: "40px" }}}> Report Now</Button>
+  <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px:  "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Now</Button>
   </div>
 </div>
 
