@@ -1,13 +1,14 @@
 import React from 'react';
 import { IBrand, ILogo } from '../utils/icons';
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
-
+const navigate = useNavigate()
  return (
   <div >
     <header className='bg-black flex items-center justify-between w-full sm:static fixe sm:mb-0'>
-     <img src={ILogo} alt="" className='sm-[150px] md:w-[170px]  md:h-full w-[100px] h-[80px]' />
+     <img src={ILogo} alt="" onClick={_=> navigate(-1)} className='sm-[150px] md:w-[170px]  md:h-full w-[100px] h-[80px]' />
      
      
      {/* <div className='text-white w-full'>

@@ -2,7 +2,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import React from "react";
-import { ILogo, IStreetWaste, IWaste, IHazardous, IConstruction, ISewage, IStreet, ISolid } from "../utils/icons";
+import { ILogo, IStreetWaste, IHazardous, IConstruction, ISewage, IStreet, ISolid, IStreetWasteBg } from "../utils/icons";
 import Header from "../components/Header";
 import { Button, Card, CardActionArea, CardContent, CardMedia, Chip, Divider, Typography } from "@mui/material";
 import Footer from "../components/Footer";
@@ -24,28 +24,12 @@ const Home = () => {
 
 						<div className="relative">
 							<img
-								src={IStreetWaste}
+								src={IStreetWasteBg}
 								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
 								alt=""
 							/>
 
 							<div className="absolute bg-[rgba(255,255,255,.5)] top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex justify-start items-center px-20">
-								<div className="caption z-50 text-black">
-        <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Hazardous</span> waste</p>
-									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
-								</div>
-							</div>
-						</div>
-
-					<div className="relative">
-							<img
-								src={IWaste}
-								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
-								alt=""
-							/>
-
-<div className="absolute bg-[rgba(255,255,255,.5)] top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex justify-start items-center px-20">
 								<div className="caption z-50 text-black">
         <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Street</span> Littering</p>
 									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
@@ -54,9 +38,25 @@ const Home = () => {
 							</div>
 						</div>
 
-      <div className="relative">
+					<div className="relative">
 							<img
 								src={IStreetWaste}
+								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
+								alt=""
+							/>
+
+<div className="absolute bg-[rgba(255,255,255,.5)] top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex justify-start items-center px-20">
+								<div className="caption z-50 text-black">
+        <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Hazardous</span> Waste</p>
+									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
+         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
+								</div>
+							</div>
+						</div>
+
+      <div className="relative">
+							<img
+								src={IStreetWasteBg}
 								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
 								alt=""
 							/>
@@ -72,7 +72,7 @@ const Home = () => {
 
       <div className="relative">
 							<img
-								src={IWaste}
+								src={IStreetWaste}
 								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
 								alt=""
 							/>
@@ -88,7 +88,7 @@ const Home = () => {
 
       <div className="relative">
 							<img
-								src={IStreetWaste}
+								src={IStreetWasteBg}
 								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
 								alt=""
 							/>
@@ -127,7 +127,6 @@ const Home = () => {
       <CardActionArea>
         <CardMedia
           component="img"
-          // height="140"
           sx={{height: '230px'}}
           image={url}
           alt="green iguana"
@@ -148,7 +147,6 @@ const Home = () => {
    </div>
    </section>
 
-{/* <hr /> */}
 <div className="mb-10">
 <Divider>
     <Chip label="Seen any waste?" />

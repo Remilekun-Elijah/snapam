@@ -1,5 +1,4 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
 import ViewLocation from './pages/ViewLocation';
 import { INotFound } from './utils/icons';
@@ -9,12 +8,23 @@ import LocationDetails from './pages/LocationDetails';
 import SubmitReport from './pages/SubmitReport';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import React from 'react';
+import './App.css';
 
 function App() {
+  function ScrollToTop() {
+    const { pathname } = useLocation();
   
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  
+    return null;
+  }
+
   return (
-    <div className="App overflow-auto">
     <BrowserRouter>
+    <div className="App">
     {/* The rest of your app goes here */}
     <Routes>
         <Route path="/" element={process.env.REACT_APP_USER === "admin" ? <Login /> : <Home />} />
@@ -39,8 +49,9 @@ function App() {
         </div>
       } />
       </Routes>
-  </BrowserRouter>
+  <ScrollToTop/>
   </div>
+  </BrowserRouter>
   );
 }
 
