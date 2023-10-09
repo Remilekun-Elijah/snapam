@@ -7,7 +7,7 @@ import L from 'leaflet'
 import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 
-const Map = ({ center, mapData, setModal, setLocationId, isLoading }) => {
+const Map = ({ center, mapData, isLoading }) => {
 
 
 

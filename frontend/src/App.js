@@ -1,14 +1,14 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ViewLocation from './pages/ViewLocation';
 import { INotFound } from './utils/icons';
 import Button from './components/Button';
 import PrivateRoutes from './utils/PrivateRoutes';
 import LocationDetails from './pages/LocationDetails';
-import Landing from './pages/Landing';
 import SubmitReport from './pages/SubmitReport';
+import Home from './pages/Home';
+import Login from './pages/Login';
 
 function App() {
   
@@ -17,8 +17,7 @@ function App() {
     <BrowserRouter>
     {/* The rest of your app goes here */}
     <Routes>
-        <Route path="/" element={process.env.REACT_APP_USER === "admin" ? <Login /> : <Landing />} />
-      <Route path='/admin' element={<Login />} />
+        <Route path="/" element={process.env.REACT_APP_USER === "admin" ? <Login /> : <Home />} />
         <Route path="/report/submit" element={<SubmitReport />} />
       
        <Route element={<PrivateRoutes />}>

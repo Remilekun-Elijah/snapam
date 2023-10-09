@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import WEBCAM from "../components/Camera";
 import Map from "../components/Map";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -11,7 +10,6 @@ import Alert from "../utils/alert";
 import { FiSearch } from "react-icons/fi";
 import styled from "styled-components";
 import Report from "../action/location";
-import Mapbox from "../components/Mapbox";
 
 const SearchBoxDiv = styled.div`
 		border: 1px solid #a5adba;
@@ -20,13 +18,10 @@ const SearchBoxDiv = styled.div`
 		color: #030d25;
 	`;
 const options = ["LGA", ...lgas];
-const optionsArea = ["Area", ...lgas];
 
 const Dashboard = () => {
 	const [mapData, setMapData] = React.useState([]);
 	const navigate = useNavigate();
-	const [locationId, setLocationId] = React.useState("");
-	const [showModal, setModal] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const center = {
 		lat: 6.458985,
@@ -137,12 +132,9 @@ const Dashboard = () => {
 			</div>
 
 			<div className="flex justify-center">
-				<Map {...{ center, mapData, setModal, setLocationId, isLoading }} />
-
-				{/* <Mapbox {...{reports: mapData}}/> */}
+				<Map {...{ center, mapData, isLoading }} />
 			</div>
 
-			{/* <WEBCAM {...{ showModal, setModal, locationId, fetchReports }} /> */}
 			<Footer />
 		</div>
 	);

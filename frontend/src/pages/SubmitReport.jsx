@@ -120,7 +120,6 @@ export default function SubmitReport() {
 								placeholder={" "}
 								wrapperClass={"mt-5 input__two"}
 								inputClass={"shadow"}
-								required={true}
 								onChange={addData}
 							/>
 							<SelectTwo

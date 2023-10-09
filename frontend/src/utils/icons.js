@@ -7,6 +7,8 @@ import Logo from "../assets/images/logo.jpeg";
 import Report from "../assets/images/location-marker.png";
 import Waste from "../assets/images/waste-img.png";
 import Map from "../assets/images/map.png";
+import StreetWaste from "../assets/images/street-littering.webp";
+import Brand from "../assets/images/brand.png";
 
 export const ISuccess = Success;
 export const IArrowBack = ArrowBack; 
@@ -17,3 +19,5 @@ export const ILogo = Logo;
 export const ILocation = Report;
 export const IWaste = Waste;
 export const IMap = Map;
+export const IStreetWaste = StreetWaste;
+export const IBrand = Brand;

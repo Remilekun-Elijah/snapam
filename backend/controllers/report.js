@@ -17,7 +17,7 @@ const locationSchema = joi.object({
  lga: joi.string().required(),
  typeOfWaste: joi.string().required(),
  area: joi.string().required(),
- address: joi.string().required(),
+ address: joi.string(),
 })
 
 class ReportController {
