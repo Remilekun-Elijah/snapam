@@ -19,7 +19,7 @@ export default function LocationDetails() {
 		<div className="">
 			<Header />
 
-			<div className="px-[10%] mb-20">
+			<div className="px-[10%] md:mb-20 mb-10">
 				<div className="mt-20 flex items-center justify-between mb-10 ">
 					<div>
 					<div className="flex">
@@ -167,6 +167,7 @@ export default function LocationDetails() {
 					</div>
 				</div>
 			</div>
+			
 			<Footer />
 		</div>
 	);

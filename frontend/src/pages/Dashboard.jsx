@@ -63,7 +63,7 @@ const Dashboard = () => {
 		<div className="h-screen overflowX-hidden">
 			<Header />
 
-			<div className="mt-6 px-[10%] flex flex-col mb-20">
+			<div className="mt-6 px-[10%] flex flex-col">
 			<div className="flex  justify-center md:justify-between flex-row flex-wrap md:order-1 mt-10">
 				<h1 className="text-center text-lg  ms:text-2xl ">
 					<b>{format(mapData.length)}</b> available {mapData.length > 1 ? 'reports' : 'report'} {mapData.length > 1 ? "are" : 'is'} marked with <b>{mapData.length > 1 ? "GPS Markers" : "GPS Marker"}</b>{" "}
@@ -131,7 +131,7 @@ const Dashboard = () => {
 			</div>
 			</div>
 
-			<div className="flex justify-center">
+			<div className="flex justify-center md:mb-20 mb-10">
 				<Map {...{ center, mapData, isLoading }} />
 			</div>
 
