@@ -28,6 +28,7 @@ function App() {
     {/* The rest of your app goes here */}
     <Routes>
         <Route path="/" element={process.env.REACT_APP_USER === "admin" ? <Login /> : <Home />} />
+        <Route path="/admin" element={<Login />} />
         <Route path="/report/submit" element={<SubmitReport />} />
       
        <Route element={<PrivateRoutes />}>

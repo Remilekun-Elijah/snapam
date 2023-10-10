@@ -15,6 +15,9 @@ import Sewage from "../assets/images/sewage.png";
 import Street from "../assets/images/street-litter.png";
 import Solid from "../assets/images/solid.png";
 import StreetWasteBg from "../assets/images/street-waste.jpg";
+import Lagos from "../assets/images/lagos.png";
+import Lawma from "../assets/images/lawma.png";
+
 
 export const ISuccess = Success;
 export const IArrowBack = ArrowBack; 
@@ -33,3 +36,5 @@ export const ISewage = Sewage;
 export const IStreet = Street;
 export const ISolid = Solid;
 export const IStreetWasteBg = StreetWasteBg;
+export const ILagos = Lagos;
+export const ILawma = Lawma;

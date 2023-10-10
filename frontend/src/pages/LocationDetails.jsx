@@ -19,7 +19,7 @@ export default function LocationDetails() {
 		<div className="">
 			<Header />
 
-			<div className="px-[10%]">
+			<div className="px-[10%] mb-20">
 				<div className="mt-20 flex items-center justify-between mb-10 ">
 					<div>
 					<div className="flex">
@@ -40,10 +40,10 @@ export default function LocationDetails() {
 					</button> */}
 				</div>
 				<div>
-					{state.image &&
+					{state?.image &&
       <div className="flex flex-col justify-center">
      <img
-						src={state.image}
+						src={state?.image}
       style={{maxHeight: "400px"}}
 						alt=""
 					/>
@@ -51,31 +51,8 @@ export default function LocationDetails() {
      </div>
      }
 
-<div className="hidden  flex-wra gap-10">
-					<div className="flex gap-2">
-					<MdOutlineLocationCity title="Address" size="24" color="green" />{" "}
-										<p className="ml-2 text-gray-600">Area</p>
-					</div>
 
-					<div className="flex w-full">
-						<div className="flex gap-2">
-					<MdOutlineLocationCity title="Address" size="24" color="green" />{" "}
-										<p className="ml-2 text-gray-600">Area</p>
-						</div>
-
-						<td>{state.area || "N/A"}</td>
-					</div>
-
-					<div className="flex justify-between w-ful">
-						<div className="flex gap-2">
-					<MdOutlineLocationCity title="Address" size="24" color="green" />{" "}
-										<p className="ml-2 text-gray-600">Area</p>
-						</div>
-						<td>{state.area || "N/A"}</td>
-					</div>
-</div>
-
-					<div className="mt-8 ">
+					<div className="md:mt-8 mt-2 ">
 						<table>
 							<thead>
 								<tr className="invisible">
@@ -83,12 +60,25 @@ export default function LocationDetails() {
 								</tr>
 							</thead>
 							<tbody>
+							<tr className="mt-20 ">
+									<td className="flex mr-5">
+										<RiGovernmentFill size="24" color="green" />{" "}
+										<p className="ml-2 text-gray-600">Address</p>
+									</td>
+									<td>{state?.address || "N/A"}</td>
+								</tr>
+
+								<tr className="invisible">
+									<td>place</td>
+								</tr>
+
+
 								<tr>
 									<td className="flex mr-5">
 										<MdOutlineLocationCity title="Address" size="24" color="green" />{" "}
 										<p className="ml-2 text-gray-600">Area</p>
 									</td>
-									<td>{state.area || "N/A"}</td>
+									<td>{state?.area || "N/A"}</td>
 								</tr>
 
 								<tr className="invisible">
@@ -100,7 +90,7 @@ export default function LocationDetails() {
 										<RiGovernmentFill size="24" color="green" />{" "}
 										<p className="ml-2 text-gray-600">LGA</p>
 									</td>
-									<td>{state.lga || "N/A"}</td>
+									<td>{state?.lga || "N/A"}</td>
 								</tr>
 
 								<tr className="invisible">
@@ -113,7 +103,7 @@ export default function LocationDetails() {
 										<p className="ml-2 text-gray-600">Location</p>
 									</td>
 									<td>
-										<Button startIcon={_=><RoomIcon/>} target="_blank" rel={"noreferrer"} variant="text" className="capitalize" href={`https://www.google.com/maps?q=${state.latitude},${state.longitude}`} sx={{textTransform: 'capitalize'}}> Open On Google Map</Button>
+										<Button startIcon={_=><RoomIcon/>} target="_blank" rel={"noreferrer"} variant="text" className="capitalize" href={`https://www.google.com/maps?q=${state?.latitude},${state?.longitude}`} sx={{textTransform: 'capitalize'}}> Open On Google Map</Button>
 									</td>
 								</tr>
 <br/>
@@ -127,9 +117,9 @@ export default function LocationDetails() {
 										<p className="ml-2 text-gray-600">Type of Waste</p>
 									</td>
 
-									<td>{state.typeOfWaste || "N/A"}</td>
+									<td>{state?.typeOfWaste || "N/A"}</td>
 								</tr>
-								{state.treatedBy && 
+								{state?.treatedBy && 
 								<>
 								<tr className="invisible">
 									<td>place</td>
@@ -140,7 +130,7 @@ export default function LocationDetails() {
 										<FaUserAlt size="24" color="green" />{" "}
 										<p className="ml-2 text-gray-600"> Treated By</p>
 									</td>
-									<td>{state.treatedBy?.name || "N/A"}</td>
+									<td>{state?.treatedBy?.name || "N/A"}</td>
 								</tr>
 								</>}
 
@@ -153,7 +143,7 @@ export default function LocationDetails() {
 										<FaMobile size="24" color="green" />{" "}
 										<p className="ml-2 text-gray-600">Reporters Tel.</p>
 									</td>
-									<td>{state.phoneNumber || "N/A"}</td>
+									<td>{state?.phoneNumber || "N/A"}</td>
 								</tr>
 
 								<tr className="invisible">
@@ -162,14 +152,14 @@ export default function LocationDetails() {
 
 								<tr className="mt-20 pt-20">
 										<td className="flex ml-1 mr-5">
-										{state.isTreated ?
+										{state?.isTreated ?
 										<DeleteSweepIcon size='26' color='success'/>
 										:
 											<AutoDeleteIcon size='26' color='success'/>
 											}
 										 <p className='ml-2 text-gray-600'>Status</p>
 											</td>
-									<td className="">{state.isTreated ? "Treated" : "Pending"}
+									<td className="">{state?.isTreated ? "Treated" : "Pending"}
 									</td>
 								</tr>
 							</tbody>

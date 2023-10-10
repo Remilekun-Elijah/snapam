@@ -2,7 +2,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import React from "react";
-import { ILogo, IStreetWaste, IHazardous, IConstruction, ISewage, IStreet, ISolid, IStreetWasteBg } from "../utils/icons";
+import { ILogo, IStreetWaste, IHazardous, IConstruction, ISewage, IStreet, ISolid, IStreetWasteBg, ILagos, ILawma } from "../utils/icons";
 import Header from "../components/Header";
 import { Button, Card, CardActionArea, CardContent, CardMedia, Chip, Divider, Typography } from "@mui/material";
 import Footer from "../components/Footer";
@@ -22,85 +22,28 @@ const Home = () => {
 					swipeAble={true}
 					showArrows={true}>
 
-						<div className="relative">
+						{[
+							{name: 'Street', url: IStreetWasteBg},
+								{name: 'Hazardous', url: IStreetWaste},
+							{name: 'Construction', url: IStreetWasteBg},
+								{name: 'Sewage', url: IStreetWaste},
+							{name: 'Solid', url: IStreetWasteBg}
+								].map(({name, url}, key) => (
+								<div className="relative" {...{key}}>
 							<img
-								src={IStreetWasteBg}
+								src={url}
 								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
 								alt=""
 							/>
 
 							<div className="absolute bg-[rgba(255,255,255,.5)] top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex justify-start items-center px-20">
 								<div className="caption z-50 text-black">
-        <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Street</span> Littering</p>
-									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
+        <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold text-[darkblue]"><span className="border-b-2 border-[red]">{name}</span> {key > 0 ? "Waste" : "Littering"}</p>
+									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10 text-[darkblue]">LET’S CLEAN LAGOS TOGETHER</p>
+         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: {sm: "40px"},  width: { sm: '300px' }, borderRadius: '15px', height: {sm: '60px'}, fontWeight: {sm: 'bold'}, fontSize: {sm: '20px'}}}> Report Waste</Button>
 								</div>
 							</div>
-						</div>
-
-					<div className="relative">
-							<img
-								src={IStreetWaste}
-								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
-								alt=""
-							/>
-
-<div className="absolute bg-[rgba(255,255,255,.5)] top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex justify-start items-center px-20">
-								<div className="caption z-50 text-black">
-        <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Hazardous</span> Waste</p>
-									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
-								</div>
-							</div>
-						</div>
-
-      <div className="relative">
-							<img
-								src={IStreetWasteBg}
-								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
-								alt=""
-							/>
-
-							<div className="absolute bg-[rgba(255,255,255,.5)] top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex justify-start items-center px-20">
-								<div className="caption z-50 text-black">
-        <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Construction</span> waste</p>
-									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
-								</div>
-							</div>
-						</div>
-
-      <div className="relative">
-							<img
-								src={IStreetWaste}
-								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
-								alt=""
-							/>
-
-<div className="absolute bg-[rgba(255,255,255,.5)] top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex justify-start items-center px-20">
-								<div className="caption z-50 text-black">
-        <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Sewage</span> Waste</p>
-									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
-								</div>
-							</div>
-						</div>
-
-      <div className="relative">
-							<img
-								src={IStreetWasteBg}
-								className="lg:w-[70%] w-[80%] md:h-[500px] sm:h-[400px] h-[300px]"
-								alt=""
-							/>
-
-<div className="absolute bg-[rgba(255,255,255,.5)] top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex justify-start items-center px-20">
-								<div className="caption z-50 text-black">
-        <p className="text-left text-[12px] sm:text-lg uppercase aharoni sm:font-bold"><span className="sm:border-b-4 border-b-2 border-[red]">Solid</span> Waste</p>
-									<p className="lg:text-5xl md:text-4xl text-sm font-bold sm:font-thin mb-10">LET’S CLEAN LAGOS TOGETHER</p>
-         <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Waste</Button>
-								</div>
-							</div>
-						</div>
+						</div>))}
 				</Carousel>
 			</section>
 
@@ -135,10 +78,10 @@ const Home = () => {
           <Typography gutterBottom variant="h5" component="div">
             {name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          {/* <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
-          </Typography>
+          </Typography> */}
         </CardContent>
       </CardActionArea>
     </Card>
@@ -153,7 +96,7 @@ const Home = () => {
   </Divider>
 
   <div className="flex justify-center mt-5">
-  <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px:  "40px",  width: { sm: '300px' }, borderRadius: '15px', height: '60px', fontWeight: 'bold', fontSize: {sm: '20px', }, }}> Report Now</Button>
+  <Button variant="contained" component={Link} to="/report/submit" color="error" size="large" sx={{ px: {sm: "40px"},  width: { sm: '300px' }, borderRadius: '15px', height: {sm: '60px'}, fontWeight: {sm: 'bold'}, fontSize: {sm: '20px'}}}> Report Now</Button>
   </div>
 </div>
 
@@ -167,12 +110,12 @@ const Home = () => {
 						</h1>
 						<div className="flex items-center justify-center flex-wrap w-full sm:mt-10 mt-5">
 							<img
-								src={ILogo}
+								src={ILagos}
 								alt=""
-								className="sm:mr-10 mr-7 block sm:w-[160px]  w-[120px]"
+								className="sm:mr-10 mr-7 block sm:w-[130px]  w-[130px]"
 							/>
 							<img
-								src={ILogo}
+								src={ILawma}
 								alt=""
 								className="block sm:w-[160px] w-[120px]"
 							/>

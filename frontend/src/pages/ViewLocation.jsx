@@ -173,7 +173,7 @@ const ViewLocation = () => {
 	return (
 		<div>
 			<Header />
-			<div className="px-[10%]">
+			<div className="px-[10%] mb-20">
 				<div className="flex  items-center justify-between flex-wrap  mt-16 mb-5 ">
 					<div className="flex items-center">
 						<img
