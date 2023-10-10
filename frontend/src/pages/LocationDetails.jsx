@@ -113,7 +113,7 @@ export default function LocationDetails() {
 
 								<tr className="m-10 pt-0">
 									<td className="flex mr-5">
-										<RecyclingIcon size="24" color="green" />{" "}
+										<RecyclingIcon size="24" style={{color: 'green'}}/>{" "}
 										<p className="ml-2 text-gray-600">Type of Waste</p>
 									</td>
 
@@ -167,7 +167,7 @@ export default function LocationDetails() {
 					</div>
 				</div>
 			</div>
-			
+
 			<Footer />
 		</div>
 	);
